@@ -21,6 +21,7 @@
   "dependencies": {
     "expo": "^25.0.0",
     "firebase": "^4.10.0",
+    "jest": "^22.4.0",
     "native-base": "^2.3.9",
     "react": "16.2.0",
     "react-native": "0.52.0",
