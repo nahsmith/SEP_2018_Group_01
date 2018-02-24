@@ -6,3 +6,5 @@ it('renders without crashing', () => {
   const rendered = renderer.create(<App />).toJSON();
   expect(rendered).toBeTruthy();
 });
+
+afterAll(() => setTimeout(() => process.exit(), 5000))
