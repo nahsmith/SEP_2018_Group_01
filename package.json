@@ -16,7 +16,15 @@
     "test": "node node_modules/jest/bin/jest.js  --coverage --colors --verbose"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    }
   },
   "dependencies": {
     "expo": "^25.0.0",
