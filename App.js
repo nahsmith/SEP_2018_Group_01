@@ -14,6 +14,7 @@ import { StackNavigator } from 'react-navigation';
 import HomeScreen from './HomeScreen';
 import RecCenter from './RecCenter';
 import FieldHouse from './FieldHouse';
+import Firebase from './Firebase';
 
 
 const App = StackNavigator({

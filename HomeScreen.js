@@ -3,25 +3,13 @@ import { StyleSheet, ScrollView, View, Alert, Image, Dimensions, TouchableOpacit
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import ScrollToTop from 'react-native-scroll-to-top';
 import { StackNavigator, NavigationActions } from 'react-navigation';
-
+import * as Firebase from './Firebase.js';
+console.log(Firebase.test())
 const deviceWidth = Dimensions.get('window').width;
 
-//var firebase = require("firebase");
-import * as firebase from "firebase";
-
-// Initialize Firebase
-var src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js";
-var config = {
- apiKey: "AIzaSyD5Ha8fSPEBkjqMchNVy8zU6vB-WvcGYTM",
- authDomain: "herkyles-85e8e.firebaseapp.com",
- databaseURL: "https://herkyles-85e8e.firebaseio.com",
- projectId: "herkyles-85e8e",
- storageBucket: "herkyles-85e8e.appspot.com",
- messagingSenderId: "812934741247"
-};
-firebase.initializeApp(config);
-var database = firebase.database();
-var firebaseHeadingRef = firebase.database().ref("facilities/id");
+Firebase.firebase.initializeApp(Firebase.config);
+var database = Firebase.firebase.database();
+var firebaseHeadingRef = Firebase.firebase.database().ref("facilities/id");
 var test1= 2;
 var stop = 0;
 
