@@ -9,10 +9,9 @@ it('renders without crashing', () => {
   expect(rendered).toBeTruthy();
 });
 
-
 /*it('home screen renders without crashing', () => {
   const homeScreenRendered = renderer.create(<HomeScreen />).toJSON();
   expect(homeScreenRendered).toBeTruthy();
 });*/
 
-afterAll(() => setTimeout(() => process.exit(), 1000))
+afterAll(() => setTimeout(() => process.exit(), 5000))
