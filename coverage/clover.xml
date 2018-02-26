@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <coverage generated="1519405852043" clover="3.2.0">
   <project timestamp="1519405852044" name="All files">
     <metrics statements="58" coveredstatements="29" conditionals="2" coveredconditionals="0" methods="23" coveredmethods="4" elements="83" coveredelements="33" complexity="0" loc="58" ncloc="58" packages="2" files="7" classes="7">
@@ -88,16 +87,6 @@
           <line num="1" count="1" type="stmt"/>
         </file>
       </package>
-=======
-<coverage generated="1519404112228" clover="3.2.0">
-  <project timestamp="1519404112228" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="3" coveredelements="3" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1">
-      <file name="App.js" path="/Users/nsmith6005/GitHub/SEP_2018_Group_01/App.js">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-      </file>
->>>>>>> master
     </metrics>
   </project>
 </coverage>
