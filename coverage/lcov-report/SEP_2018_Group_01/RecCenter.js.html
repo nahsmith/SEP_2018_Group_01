@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for SEP_2018_Group_01/RecCenter.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">SEP_2018_Group_01</a> RecCenter.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.27% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.27% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/11</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import { StyleSheet, ScrollView, View, Alert, Image, Dimensions, TouchableOpacity, Navigator} from 'react-native';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import ScrollToTop from 'react-native-scroll-to-top';
+import { StackNavigator, NavigationActions } from 'react-navigation';
+&nbsp;
+const deviceWidth = Dimensions.get('window').width;
+&nbsp;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});
+&nbsp;
+class RecCenter extends Component {
+<span class="fstat-no" title="function not covered" >    re</span>nder() {
+        const { state, navigate } = <span class="cstat-no" title="statement not covered" >this.props.navigation;</span>
+        const resetAction = <span class="cstat-no" title="statement not covered" >NavigationActions.reset({</span>
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
+          });
+<span class="cstat-no" title="statement not covered" >        return (</span>
+    &lt;Container&gt;
+            &lt;Header style={{backgroundColor: 'gold'}}&gt;
+	          &lt;Left&gt;
+                &lt;Button transparent dark onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.goBack()}</span>&gt;
+	          	    &lt;Icon name='arrow-dropleft' /&gt;
+	            &lt;/Button&gt;
+	          &lt;/Left&gt;
+	          &lt;Body&gt;
+	          	 &lt;Title&gt;Rec Center&lt;/Title&gt;
+	          &lt;/Body&gt;
+	          &lt;Right&gt;
+	          &lt;Button transparent dark onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >Alert.alert('You Pressed','Forums!')}</span>&gt;
+	          	&lt;Icon name='chatbubbles' /&gt;
+	          &lt;/Button&gt;
+	          &lt;Button transparent dark onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.dispatch(resetAction)}</span>&gt;
+	          	&lt;Icon name='home' /&gt;
+	          &lt;/Button&gt;
+	          &lt;/Right&gt;
+	        &lt;/Header&gt;
+	        &lt;Content&gt;
+	          &lt;ScrollView scrollsToTop={true} ref={<span class="fstat-no" title="function not covered" >(r</span>ef) =&gt; <span class="cstat-no" title="statement not covered" >this.myScroll = ref}</span>&gt;
+	          &lt;View style={styles.container}&gt;
+            	    &lt;Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/&gt;
+            	    &lt;Text style={{textAlign: 'center', fontSize: 30}}&gt;{'\nCampus Recreation &amp; Wellness Center'}&lt;/Text&gt;
+            	    &lt;Text style={{textAlign: 'center', fontSize: 20}}&gt;{'\nHours'}&lt;/Text&gt;
+            	    &lt;Text style={{textAlign: 'center', fontSize: 15}}&gt;{'\nMonday: 5AM - 7PM'}&lt;/Text&gt;
+            	    &lt;Text style={{textAlign: 'center', fontSize: 15}}&gt;{'Tuesday: 5:30AM - 8PM'}&lt;/Text&gt;
+                    &lt;Button style={{alignItems: 'center'}} transparent dark onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate("FieldHouse", {screen: "Field House"})}</span>&gt;
+                        &lt;Text style={{textAlign: 'center', fontSize: 30, color: 'blue'}}&gt;{'\n\n\n\n\n\n    Take Me To Field House'}&lt;/Text&gt;
+                    &lt;/Button&gt;
+                    &lt;Text style={{textAlign: 'center', fontSize: 15}}&gt;{'\n\n\n\n'}&lt;/Text&gt;
+	         	&lt;/View&gt;
+        &lt;/ScrollView&gt;
+	        &lt;/Content&gt;
+	        {/*
+	        &lt;Footer&gt;
+	          &lt;FooterTab&gt;
+	            &lt;Button full&gt;
+	              &lt;Text&gt;Footer&lt;/Text&gt;
+	            &lt;/Button&gt;
+	          &lt;/FooterTab&gt;
+	        &lt;/Footer&gt;
+	        */}
+      &lt;/Container&gt;
+        );
+    }
+}
+&nbsp;
+RecCenter.navigationOptions = {
+    title: `Rec Center`,
+    header: false,
+};
+&nbsp;
+export default RecCenter
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 26 2018 12:09:32 GMT-0600 (CST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

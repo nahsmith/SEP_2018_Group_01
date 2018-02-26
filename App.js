@@ -1,21 +1,25 @@
+{/*
+	YOU MUST RUN EACH OF THESE DEPENDENCIES IN THE CONSOLE PRIOR TO RUNNING
+	
+	yarn add react
+	yarn add react-native
+	yarn add native-base
+	yarn add react-native-scroll-to-top
+	yarn add react-navigation
+*/}
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+import { StackNavigator } from 'react-navigation';
+import HomeScreen from './HomeScreen';
+import RecCenter from './RecCenter';
+import FieldHouse from './FieldHouse';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const App = StackNavigator({
+    HomeScreen: { screen: HomeScreen},
+		RecCenter: { screen: RecCenter},
+		FieldHouse: { screen: FieldHouse}
+})
+
+export default App;
