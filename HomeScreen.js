@@ -71,7 +71,7 @@ export default class HomeScreen extends Component {
     }
   
   render() {
-    const { navigate } = this.props.navigation;
+    const navigate = this.props.navigation;
     const resetAction = NavigationActions.reset({
         index: 0,
         actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],

@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
 
 class FieldHouse extends Component {
     render() {
-        const { state, navigate } = this.props.navigation;
+        const state = this.props.navigation;
+				const navigate = this.props.navigation;
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
