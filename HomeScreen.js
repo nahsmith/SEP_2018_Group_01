@@ -3,11 +3,13 @@ import { StyleSheet, ScrollView, View, Alert, Image, Dimensions, TouchableOpacit
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import ScrollToTop from 'react-native-scroll-to-top';
 import { StackNavigator, NavigationActions } from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
 
 const deviceWidth = Dimensions.get('window').width;
 
 //var firebase = require("firebase");
 import * as firebase from "firebase";
+//import { database } from 'firebase';
 
 // Initialize Firebase
 var src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js";
@@ -21,18 +23,7 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-var firebaseHeadingRef = firebase.database().ref("facilities/id");
-var test1= 2;
-var stop = 0;
-
-
-class Gyms extends Component {
-    render() {
-      return (
-        <Text style={{textAlign: 'center', fontSize: 30}}>{this.props.name}</Text>
-      );
-    }
-  }
+var test1= 0; 
 
 export default class HomeScreen extends Component {
   
@@ -42,36 +33,30 @@ export default class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        console.log("compDidMount HERE")
-        this.setState({})
+        
     }
-
+    
     constructor(props) {
         super(props);
-        var tryme = "testing";
         console.log("constructor")
-        firebaseHeadingRef.on("value", function(snapshot) {
-            //return snapshot.val();
-            test1 = snapshot.val();
-            console.log(test1);
-            console.log(typeof(test1));
-            this.state={
-                gym1: test1
-            }
-            if (typeof(test1) === 'string'){
-                console.log("String!");
-            }
-            else{
-                console.log("No String!");
-            }
-            console.log("This is working: " + test1);
-        }, function (error) {
-            console.log("Error: " + error.code);
-        });
+        this.state={
+            gym1: ""
+        }
+        var that = this;
+        var firebaseHeadingRef = firebase.database().ref("facilities/id");
+        firebaseHeadingRef.once("value")
+        .then(function(dataSnapshot) {
+          test1 = dataSnapshot.val();
+          console.log("Test1 = " + test1);
+          that.setState({
+            gym1 : test1
+          });
+        });          
     }
   
   render() {
     const { navigate } = this.props.navigation;
+    //const { mygym } = this.state;
     const resetAction = NavigationActions.reset({
         index: 0,
         actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
@@ -85,27 +70,17 @@ export default class HomeScreen extends Component {
 	          	 <Title>Herkyles</Title>
 	          </Body>
 	          <Right>
-              {/*
-	          <Button transparent dark onPress={() => Alert.alert('You Pressed','Back!')}>
-	          	<Icon name='arrow-dropleft' />
-	          </Button>
-              */}
 	          <Button transparent dark onPress={() => Alert.alert('You Pressed','Forums!')}>
 	          	<Icon name='chatbubbles' />
 	          </Button>
-              {/*
-	          <Button transparent dark onPress={() => this.props.navigation.dispatch(resetAction)}>
-	          	<Icon name='home' />
-	          </Button>
-              */}
 	          </Right>
 	        </Header>
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={this.clearText}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Rec Center"})}>
             	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{test1}</Text>
+            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
@@ -131,18 +106,15 @@ export default class HomeScreen extends Component {
 	         	</View>
         </ScrollView>
 	        </Content>
-	        {/*
-	        <Footer>
-	          <FooterTab>
-	            <Button full>
-	              <Text>Footer</Text>
-	            </Button>
-	          </FooterTab>
-	        </Footer>
-	        */}
       </Container>
     );
   }
+}
+function refresh(test1){
+  console.log("HERE: " + test1)
+}
+function testing(test1){
+  this.setState({gym1: test1}, refresh(test1))
 }
 
 const styles = StyleSheet.create({
