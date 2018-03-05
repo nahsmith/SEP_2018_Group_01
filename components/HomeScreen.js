@@ -71,7 +71,7 @@ export default class HomeScreen extends Component {
     }
   
   render() {
-    const navigate = this.props.navigation;
+    const { navigate }= this.props.navigation;
     const resetAction = NavigationActions.reset({
         index: 0,
         actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
@@ -104,7 +104,7 @@ export default class HomeScreen extends Component {
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={this.clearText}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
+            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/CampusRec.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{test1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
@@ -113,7 +113,7 @@ export default class HomeScreen extends Component {
 	         	</View>
 	         	<View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/FieldHouse.jpg')}/>
+            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FieldHouse.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\nField House'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
@@ -122,7 +122,7 @@ export default class HomeScreen extends Component {
 	         	</View>
 	         	<View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => Alert.alert('You Pressed','#3!',[{text: 'OK', onPress: () => console.log('OK Pressed')}])}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/FitnessEast.jpg')}/>
+            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FitnessEast.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\nFitness East Recreational Facilty'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>

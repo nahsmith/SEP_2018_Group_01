@@ -11,9 +11,9 @@
 import React from 'react';
 
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './HomeScreen';
-import RecCenter from './RecCenter';
-import FieldHouse from './FieldHouse';
+import HomeScreen from './components/HomeScreen.js';
+import RecCenter from './components/RecCenter.js';
+import FieldHouse from './components/FieldHouse.js';
 
 const App = StackNavigator({
     HomeScreen: { screen: HomeScreen},

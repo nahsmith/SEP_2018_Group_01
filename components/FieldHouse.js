@@ -20,10 +20,9 @@ const styles = StyleSheet.create({
   },
 });
 
-class RecCenter extends Component {
+class FieldHouse extends Component {
     render() {
-				const state = this.props.navigation;
-				const navigate = this.props.navigation;
+        const { state, navigate } = this.props.navigation;
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
@@ -37,7 +36,7 @@ class RecCenter extends Component {
 	            </Button>
 	          </Left>
 	          <Body>
-	          	 <Title>Rec Center</Title>
+	          	 <Title>Field House</Title>
 	          </Body>
 	          <Right>
 	          <Button transparent dark onPress={() => Alert.alert('You Pressed','Forums!')}>
@@ -51,13 +50,13 @@ class RecCenter extends Component {
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
-            	    <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
-            	    <Text style={{textAlign: 'center', fontSize: 30}}>{'\nCampus Recreation & Wellness Center'}</Text>
+            	    <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FieldHouse.jpg')}/>
+            	    <Text style={{textAlign: 'center', fontSize: 30}}>{'\nField House'}</Text>
             	    <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	    <Text style={{textAlign: 'center', fontSize: 15}}>{'\nMonday: 5AM - 7PM'}</Text>
             	    <Text style={{textAlign: 'center', fontSize: 15}}>{'Tuesday: 5:30AM - 8PM'}</Text>
-                    <Button style={{alignItems: 'center'}} transparent dark onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
-                        <Text style={{textAlign: 'center', fontSize: 30, color: 'blue'}}>{'\n\n\n\n\n\n    Take Me To Field House'}</Text>
+                    <Button style={{alignItems: 'center'}} transparent dark onPress={() => navigate("RecCenter", {screen: "Rec Center"})}>
+                        <Text style={{textAlign: 'center', fontSize: 30, color: 'blue'}}>{'\n\n\n\n\n\n     Take Me To Rec Center'}</Text>
                     </Button>
                     <Text style={{textAlign: 'center', fontSize: 15}}>{'\n\n\n\n'}</Text>
 	         	</View>
@@ -77,9 +76,9 @@ class RecCenter extends Component {
     }
 }
 
-RecCenter.navigationOptions = {
-    title: `Rec Center`,
-    header: false,
+FieldHouse.navigationOptions = {
+        title: 'Field House',
+        header: false,
 };
 
-export default RecCenter
+export default FieldHouse;
