@@ -6,7 +6,16 @@
 	yarn add native-base
 	yarn add react-native-scroll-to-top
 	yarn add react-navigation
+
+	yarn add react-dom
+	yarn add --save-dev react-addons-test-utils enzyme
+	yarn add --save-dev enzyme enzyme-adapter-react-16
+	yarn add husky lint-staged prettier
+	./node_modules/.bin/prettier --single-quote --write "*.{js,jsx,json,css}"
+	yarn add flow-bin
 */
+
+// @flow
 
 import React from 'react';
 
@@ -16,9 +25,9 @@ import RecCenter from './components/RecCenter.js';
 import FieldHouse from './components/FieldHouse.js';
 
 const App = StackNavigator({
-    HomeScreen: { screen: HomeScreen},
-	RecCenter: { screen: RecCenter},
-	FieldHouse: { screen: FieldHouse}
-})
+  HomeScreen: { screen: HomeScreen },
+  RecCenter: { screen: RecCenter },
+  FieldHouse: { screen: FieldHouse }
+});
 
 export default App;

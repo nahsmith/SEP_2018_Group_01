@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, View, Alert, Image, Dimensions, TouchableOpacity, TouchableHighlight, Navigator} from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
@@ -27,118 +29,118 @@ var stop = 0;
 
 
 class Gyms extends Component {
-    render() {
-      return (
-        <Text style={{textAlign: 'center', fontSize: 30}}>{this.props.name}</Text>
-      );
-    }
+  render() {
+    return (
+      <Text style={{textAlign: 'center', fontSize: 30}}>{this.props.name}</Text>
+    );
   }
+}
 
 export default class HomeScreen extends Component {
   
-    static navigationOptions = {
-        title: "Home",
-        header: false,
-    }
+  static navigationOptions = {
+    title: "Home",
+    header: false,
+  }
 
-    componentDidMount() {
-        console.log("compDidMount HERE")
-        this.setState({})
-    }
+  componentDidMount() {
+    console.log("compDidMount HERE")
+    this.setState({})
+  }
 
-    constructor(props) {
-        super(props);
-        var tryme = "testing";
-        console.log("constructor")
-        firebaseHeadingRef.on("value", function(snapshot) {
-            //return snapshot.val();
-            test1 = snapshot.val();
-            console.log(test1);
-            console.log(typeof(test1));
-            this.state={
-                gym1: test1
-            }
-            if (typeof(test1) === 'string'){
-                console.log("String!");
-            }
-            else{
-                console.log("No String!");
-            }
-            console.log("This is working: " + test1);
-        }, function (error) {
-            console.log("Error: " + error.code);
-        });
-    }
+  constructor(props) {
+    super(props);
+    var tryme = "testing";
+    console.log("constructor")
+    firebaseHeadingRef.on("value", function(snapshot) {
+      //return snapshot.val();
+      test1 = snapshot.val();
+      console.log(test1);
+      console.log(typeof(test1));
+      this.state={
+          gym1: test1
+      }
+      if (typeof(test1) === 'string'){
+          console.log("String!");
+      }
+      else{
+          console.log("No String!");
+      }
+      console.log("This is working: " + test1);
+    }, function (error) {
+        console.log("Error: " + error.code);
+    });
+  }
   
   render() {
     const { navigate }= this.props.navigation;
     const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
-      });
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
+    });
     return (
     	<Container>
-            <Header style={{backgroundColor: 'gold'}}>
-	          <Left>
-	          </Left>
-	          <Body>
-	          	 <Title>Herkyles</Title>
-	          </Body>
-	          <Right>
-              {/*
-	          <Button transparent dark onPress={() => Alert.alert('You Pressed','Back!')}>
-	          	<Icon name='arrow-dropleft' />
-	          </Button>
-              */}
-	          <Button transparent dark onPress={() => Alert.alert('You Pressed','Forums!')}>
-	          	<Icon name='chatbubbles' />
-	          </Button>
-              {/*
-	          <Button transparent dark onPress={() => this.props.navigation.dispatch(resetAction)}>
-	          	<Icon name='home' />
-	          </Button>
-              */}
-	          </Right>
-	        </Header>
+        <Header style={{backgroundColor: 'gold'}}>
+          <Left>
+          </Left>
+          <Body>
+            <Title>Herkyles</Title>
+          </Body>
+          <Right>
+            {/*
+              <Button transparent dark onPress={() => Alert.alert('You Pressed','Back!')}>
+                <Icon name='arrow-dropleft' />
+              </Button>
+                */}
+              <Button transparent dark onPress={() => Alert.alert('You Pressed','Forums!')}>
+                <Icon name='chatbubbles' />
+              </Button>
+                {/*
+              <Button transparent dark onPress={() => this.props.navigation.dispatch(resetAction)}>
+                <Icon name='home' />
+              </Button>
+            */}
+          </Right>
+	      </Header>
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
-	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={this.clearText}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/CampusRec.jpg')}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{test1}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
-			 </TouchableOpacity>
-	         	</View>
-	         	<View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FieldHouse.jpg')}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\nField House'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
-			 </TouchableOpacity>
-	         	</View>
-	         	<View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => Alert.alert('You Pressed','#3!',[{text: 'OK', onPress: () => console.log('OK Pressed')}])}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FitnessEast.jpg')}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\nFitness East Recreational Facilty'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
-            	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
-			 </TouchableOpacity>
-	         	</View>
-        </ScrollView>
+              <View style={styles.container} ref={ (ref) => this.recCenterButton = ref }>
+                <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Campus Recreation Center"})}>
+                  <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/CampusRec.jpg')}/>
+                  <Text style={{textAlign: 'center', fontSize: 30}}>{'Campus Recreation & Wellness Center'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.container} ref={ (ref) => this.fieldHouseButton = ref }>
+                <TouchableOpacity  activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
+                  <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FieldHouse.jpg')}/>
+                  <Text style={{textAlign: 'center', fontSize: 30}}>{'\nField House'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.container} ref={ (ref) => this.fitnessEastButton = ref }>
+                <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => Alert.alert('You Pressed','#3!',[{text: 'OK', onPress: () => console.log('OK Pressed')}])}>
+                  <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FitnessEast.jpg')}/>
+                  <Text style={{textAlign: 'center', fontSize: 30}}>{'\nFitness East Recreational Facilty'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
+                  <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
 	        </Content>
 	        {/*
-	        <Footer>
-	          <FooterTab>
-	            <Button full>
-	              <Text>Footer</Text>
-	            </Button>
-	          </FooterTab>
-	        </Footer>
+            <Footer>
+              <FooterTab>
+                <Button full>
+                  <Text>Footer</Text>
+                </Button>
+              </FooterTab>
+            </Footer>
 	        */}
       </Container>
     );
