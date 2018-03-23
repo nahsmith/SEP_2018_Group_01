@@ -104,7 +104,7 @@ export default class HomeScreen extends Component {
 	      </Header>
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
-              <View style={styles.container} ref={ (ref) => this.recCenterButton = ref }>
+              <View style={styles.container}>
                 <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Campus Recreation Center"})}>
                   <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/CampusRec.jpg')}/>
                   <Text style={{textAlign: 'center', fontSize: 30}}>{'Campus Recreation & Wellness Center'}</Text>
@@ -113,7 +113,7 @@ export default class HomeScreen extends Component {
                   <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.container} ref={ (ref) => this.fieldHouseButton = ref }>
+              <View style={styles.container}>
                 <TouchableOpacity  activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
                   <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FieldHouse.jpg')}/>
                   <Text style={{textAlign: 'center', fontSize: 30}}>{'\nField House'}</Text>
@@ -122,7 +122,7 @@ export default class HomeScreen extends Component {
                   <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.container} ref={ (ref) => this.fitnessEastButton = ref }>
+              <View style={styles.container}>
                 <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => Alert.alert('You Pressed','#3!',[{text: 'OK', onPress: () => console.log('OK Pressed')}])}>
                   <Image style={{width: deviceWidth}} resizeMode='cover' source={require('../images/FitnessEast.jpg')}/>
                   <Text style={{textAlign: 'center', fontSize: 30}}>{'\nFitness East Recreational Facilty'}</Text>
