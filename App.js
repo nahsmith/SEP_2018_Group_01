@@ -13,6 +13,7 @@
 	yarn add husky lint-staged prettier
 	./node_modules/.bin/prettier --single-quote --write "*.{js,jsx,json,css}"
 	yarn add flow-bin
+	yarn add codacy-coverage --save
 */
 
 // @flow
