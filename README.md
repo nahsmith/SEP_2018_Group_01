@@ -4,6 +4,8 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Table of Contents
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/139118b940f144c8a31c3f3af1cf76e8)](https://app.codacy.com/app/ndsmith2280/SEP_2018_Group_01?utm_source=github.com&utm_medium=referral&utm_content=ndsmith2280/SEP_2018_Group_01&utm_campaign=badger)
+
 * [Updating to New Releases](#updating-to-new-releases)
 * [Available Scripts](#available-scripts)
   * [yarn start](#yarn-start)
