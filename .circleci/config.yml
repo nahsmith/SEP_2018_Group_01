@@ -17,9 +17,6 @@ jobs:
       - run:
           name: Installing yarn
           command: yarn install
-      - run:
-          name: Installing Codacy
-          command: yarn add codacy-coverage --save
       - save_cache:
           paths:
             - node_modules
@@ -41,6 +38,9 @@ jobs:
       - run:
           name: Installing yarn
           command: yarn install
+      - run:
+          name: Installing Codacy
+          command: yarn add codacy-coverage --save
       - save_cache:
           paths:
             - node_modules
