@@ -75,10 +75,10 @@ jobs:
 
 workflows:
   version: 2
-  test-codacity-deploy:
+  test-codacy-deploy:
     jobs:
       - test
-      - codacity:
+      - codacy:
           requires:
             - test
           filters:
