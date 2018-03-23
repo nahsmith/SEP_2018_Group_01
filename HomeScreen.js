@@ -22,8 +22,12 @@ var config = {
  messagingSenderId: "812934741247"
 };
 firebase.initializeApp(config);
-var database = firebase.database();
-var test1= 0; 
+var databaseRef = firebase.database();
+var imageRef = firebase.storage();
+var test1;
+var test2;
+var arrayTest = [];
+var imageArray = [];
 
 export default class HomeScreen extends Component {
   
@@ -35,28 +39,69 @@ export default class HomeScreen extends Component {
     componentDidMount() {
         
     }
-    
+
     constructor(props) {
         super(props);
         console.log("constructor")
         this.state={
-            gym1: ""
+            gym1: "",
+            gym2: "",
+            image1: "",
+            image2: "",
         }
         var that = this;
-        var firebaseHeadingRef = firebase.database().ref("facilities/id");
-        firebaseHeadingRef.once("value")
-        .then(function(dataSnapshot) {
-          test1 = dataSnapshot.val();
-          console.log("Test1 = " + test1);
+        var mainRef = firebase.database().ref("facilities")
+        //console.log(mainRef.once("value")); 
+        //var recCenterRef = databaseRef.ref("facilities/reccenter");
+        //var fieldHouseRef = databaseRef.ref("facilities/fieldhouse")
+        var mainImageRef = imageRef.ref("mainImages/CampusRec.jpg");
+        mainImageRef.getDownloadURL().then(function(url) {
+          console.log(url);
+          imageArray[0] = url;
           that.setState({
-            gym1 : test1
-          });
-        });          
+            image1 : imageArray[0],
+          })
+        });
+        
+        mainRef.once("value").then(function(dataSnapshot) {
+          console.log(dataSnapshot);
+          var i = 0;
+          dataSnapshot.forEach(function(testingSnap){
+            arrayTest[i] = testingSnap.child("name").val();
+            //console.log(arrayTest[i]);
+            i++;
+          })
+          that.setState({
+            gym1 : arrayTest[0],
+            gym2 : arrayTest[1],
+          })
+        })
+
+        /*mainImageRef.getDownloadURL().then(function(url) {
+          console.log(url);
+        });
+        */
+
+        /*mainImageRef.once("value").then(function(imageSnapshot) {
+          console.log(imageSnapshot);
+          var i = 0;
+          imageSnapshot.forEach(function(testingSnap){
+            imageArray[i] = testingSnap.child.val();
+            //console.log(arrayTest[i]);
+            i++;
+          })
+          that.setState({
+            image1 : imageArray[0],
+            //gym2 : arrayTest[1],
+          })
+        })
+        */
+
+       
     }
   
   render() {
     const { navigate } = this.props.navigation;
-    //const { mygym } = this.state;
     const resetAction = NavigationActions.reset({
         index: 0,
         actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
@@ -79,7 +124,7 @@ export default class HomeScreen extends Component {
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Rec Center"})}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
+            	      <Image style={{width: deviceWidth}} resizeMode='cover' source = {{uri: this.state.image1.toString}}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
@@ -89,7 +134,7 @@ export default class HomeScreen extends Component {
 	         	<View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
             	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/FieldHouse.jpg')}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\nField House'}</Text>
+            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym2}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
