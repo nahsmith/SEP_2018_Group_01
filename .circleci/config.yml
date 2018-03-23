@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node:8.9.4
     working_directory: ~/repo
@@ -24,6 +24,27 @@ jobs:
       - run:
           name: Running Jest Tests
           command: yarn run test
+
+  codacy:
+    docker:
+      - image: circleci/node:8.9.4
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Sending Coverage Data to Codacy
+          command: yarn run codacy
 
   deploy:
     docker:
@@ -54,12 +75,18 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  test-codacity-deploy:
     jobs:
-      - build
+      - test
+      - codacity:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
-            - build
+            - test
           filters:
             branches:
               only: master

@@ -4,6 +4,10 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Table of Contents
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e1fa935195464a68a30774ad3a60141c)](https://www.codacy.com/app/ndsmith2280/SEP_2018_Group_01?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ndsmith2280/SEP_2018_Group_01&amp;utm_campaign=Badge_Grade)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/e1fa935195464a68a30774ad3a60141c)](https://www.codacy.com/app/ndsmith2280/SEP_2018_Group_01?utm_source=github.com&utm_medium=referral&utm_content=ndsmith2280/SEP_2018_Group_01&utm_campaign=Badge_Coverage)
+
 * [Updating to New Releases](#updating-to-new-releases)
 * [Available Scripts](#available-scripts)
   * [yarn start](#yarn-start)
