@@ -2,6 +2,7 @@
 
 # coverage
 coverage/
+!coverage/lcov.info
 
 # expo
 .expo/
