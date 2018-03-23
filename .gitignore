@@ -1,7 +1,9 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # coverage
-coverage/
+coverage/lcov-report
+coverage/clover.xml
+coverage/coverage-final.json
 
 # expo
 .expo/
