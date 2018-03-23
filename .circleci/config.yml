@@ -84,9 +84,6 @@ workflows:
       - codacy:
           requires:
             - test
-          filters:
-            branches:
-              only: master
       - deploy:
           requires:
             - test
