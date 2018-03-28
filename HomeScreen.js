@@ -23,9 +23,6 @@ var config = {
 };
 firebase.initializeApp(config);
 var databaseRef = firebase.database();
-var imageRef = firebase.storage();
-var test1;
-var test2;
 var arrayTest = [];
 var imageArray = [];
 
@@ -54,14 +51,6 @@ export default class HomeScreen extends Component {
         //console.log(mainRef.once("value")); 
         //var recCenterRef = databaseRef.ref("facilities/reccenter");
         //var fieldHouseRef = databaseRef.ref("facilities/fieldhouse")
-        var mainImageRef = imageRef.ref("mainImages/CampusRec.jpg");
-        mainImageRef.getDownloadURL().then(function(url) {
-          console.log(url);
-          imageArray[0] = url;
-          that.setState({
-            image1 : imageArray[0],
-          })
-        });
         
         mainRef.once("value").then(function(dataSnapshot) {
           console.log(dataSnapshot);
@@ -75,29 +64,7 @@ export default class HomeScreen extends Component {
             gym1 : arrayTest[0],
             gym2 : arrayTest[1],
           })
-        })
-
-        /*mainImageRef.getDownloadURL().then(function(url) {
-          console.log(url);
-        });
-        */
-
-        /*mainImageRef.once("value").then(function(imageSnapshot) {
-          console.log(imageSnapshot);
-          var i = 0;
-          imageSnapshot.forEach(function(testingSnap){
-            imageArray[i] = testingSnap.child.val();
-            //console.log(arrayTest[i]);
-            i++;
-          })
-          that.setState({
-            image1 : imageArray[0],
-            //gym2 : arrayTest[1],
-          })
-        })
-        */
-
-       
+        })  
     }
   
   render() {
@@ -124,7 +91,7 @@ export default class HomeScreen extends Component {
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Rec Center"})}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source = {{uri: this.state.image1.toString}}/>
+                    <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
@@ -154,12 +121,6 @@ export default class HomeScreen extends Component {
       </Container>
     );
   }
-}
-function refresh(test1){
-  console.log("HERE: " + test1)
-}
-function testing(test1){
-  this.setState({gym1: test1}, refresh(test1))
 }
 
 const styles = StyleSheet.create({
