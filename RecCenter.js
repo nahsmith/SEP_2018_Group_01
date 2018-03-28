@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
 
 class RecCenter extends Component {
     render() {
-        const { state, navigate } = this.props.navigation;
+				const { state, navigate } = this.props.navigation;
+				console.log("PROPS: " + state.params.db);
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],

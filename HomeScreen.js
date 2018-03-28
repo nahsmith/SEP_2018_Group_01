@@ -53,7 +53,7 @@ export default class HomeScreen extends Component {
         //var fieldHouseRef = databaseRef.ref("facilities/fieldhouse")
         
         mainRef.once("value").then(function(dataSnapshot) {
-          console.log(dataSnapshot);
+          // console.log(dataSnapshot);
           var i = 0;
           dataSnapshot.forEach(function(testingSnap){
             arrayTest[i] = testingSnap.child("name").val();
@@ -90,7 +90,7 @@ export default class HomeScreen extends Component {
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Rec Center"})}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:"mainRef"})}>
                     <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
