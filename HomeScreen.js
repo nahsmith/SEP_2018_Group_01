@@ -47,12 +47,12 @@ export default class HomeScreen extends Component {
             image2: "",
         }
         var that = this;
-        var mainRef = firebase.database().ref("facilities")
-        //console.log(mainRef.once("value")); 
+        var gymData = firebase.database().ref("facilities")
+        //console.log(gymData.once("value")); 
         //var recCenterRef = databaseRef.ref("facilities/reccenter");
         //var fieldHouseRef = databaseRef.ref("facilities/fieldhouse")
         
-        mainRef.once("value").then(function(dataSnapshot) {
+        gymData.once("value").then(function(dataSnapshot) {
           // console.log(dataSnapshot);
           var i = 0;
           dataSnapshot.forEach(function(testingSnap){
@@ -90,7 +90,7 @@ export default class HomeScreen extends Component {
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:"mainRef"})}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:this.gymData})}>
                     <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
