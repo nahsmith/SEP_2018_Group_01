@@ -25,6 +25,7 @@ firebase.initializeApp(config);
 var databaseRef = firebase.database();
 var arrayTest = [];
 var imageArray = [];
+var test ="test"
 
 export default class HomeScreen extends Component {
   
@@ -90,7 +91,7 @@ export default class HomeScreen extends Component {
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:this.gymData})}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:test})}>
                     <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
