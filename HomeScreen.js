@@ -25,7 +25,7 @@ firebase.initializeApp(config);
 var databaseRef = firebase.database();
 var arrayTest = [];
 var imageArray = [];
-var test ="test"
+var gymData="test";
 
 export default class HomeScreen extends Component {
   
@@ -48,13 +48,15 @@ export default class HomeScreen extends Component {
             image2: "",
         }
         var that = this;
-        var gymData = firebase.database().ref("facilities")
-        //console.log(gymData.once("value")); 
+        var gymDataRef = firebase.database().ref("facilities")
+        // console.log(gymDataRef.once("value")); 
         //var recCenterRef = databaseRef.ref("facilities/reccenter");
         //var fieldHouseRef = databaseRef.ref("facilities/fieldhouse")
         
-        gymData.once("value").then(function(dataSnapshot) {
+        gymDataRef.once("value").then(function(dataSnapshot) {
           // console.log(dataSnapshot);
+          gymData=dataSnapshot;
+          // console.log(gymData)
           var i = 0;
           dataSnapshot.forEach(function(testingSnap){
             arrayTest[i] = testingSnap.child("name").val();
@@ -63,7 +65,7 @@ export default class HomeScreen extends Component {
           })
           that.setState({
             gym1 : arrayTest[0],
-            gym2 : arrayTest[1],
+            gym2 : arrayTest[1], 
           })
         })  
     }
@@ -91,7 +93,7 @@ export default class HomeScreen extends Component {
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:test})}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter",{db:gymData})}>
                     <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
             	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
