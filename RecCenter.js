@@ -28,8 +28,8 @@ class RecCenter extends Component {
 				var i=0;
 				// console.log("PROPS: " + state.params.db);
 				state.params.db.forEach(function(testingSnap){
-					gymInfo.push(testingSnap.child("name").val())//.val())
-						// gymInfo.push(testingSnap)
+						// gymInfo.push(testingSnap.child("name").val())
+						 gymInfo.push(testingSnap)
 						// displayInfo.push(
 						// 	<Text style={{textAlign: 'center', fontSize: 30}}>{'\nCampus Recreation & Wellness Center'}</Text>
             // 	<Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
@@ -37,7 +37,7 @@ class RecCenter extends Component {
             // 	<Text style={{textAlign: 'center', fontSize: 15}}>{'Tuesday: 5:30AM - 8PM'}</Text>
 						// );
 				})
-				console.log(gymInfo)
+				console.log(gymInfo[0])
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
