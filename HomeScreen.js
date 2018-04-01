@@ -4,6 +4,7 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 import ScrollToTop from 'react-native-scroll-to-top';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
+import AutoHeightImage from 'react-native-auto-height-image';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -26,8 +27,12 @@ var databaseRef = firebase.database();
 var imageRef = firebase.storage();
 var test1;
 var test2;
-var arrayTest = [];
+var pageArray = []
+var nameArray = [];
 var imageArray = [];
+var routeArray = [];
+var weekdayHours = [];
+var weekendHours = [];
 
 export default class HomeScreen extends Component {
   
@@ -42,70 +47,60 @@ export default class HomeScreen extends Component {
 
     constructor(props) {
         super(props);
-        console.log("constructor")
         this.state={
-            gym1: "",
-            gym2: "",
-            image1: "",
-            image2: "",
+            gyms: "",
+            images: "test",
+            pages: "",
+            routes: "",
+            WDHours: "",
+            WEHours: "",
         }
         var that = this;
         var mainRef = firebase.database().ref("facilities")
-        //console.log(mainRef.once("value")); 
-        //var recCenterRef = databaseRef.ref("facilities/reccenter");
-        //var fieldHouseRef = databaseRef.ref("facilities/fieldhouse")
-        var mainImageRef = imageRef.ref("mainImages/CampusRec.jpg");
-        mainImageRef.getDownloadURL().then(function(url) {
-          console.log(url);
-          imageArray[0] = url;
-          that.setState({
-            image1 : imageArray[0],
-          })
-        });
         
         mainRef.once("value").then(function(dataSnapshot) {
-          console.log(dataSnapshot);
           var i = 0;
           dataSnapshot.forEach(function(testingSnap){
-            arrayTest[i] = testingSnap.child("name").val();
-            //console.log(arrayTest[i]);
+            nameArray[i] = testingSnap.child("name").val();
+            imageArray[i] = testingSnap.child("image").val();
+            pageArray[i] = testingSnap.child("page").val();
+            weekdayHours[i] = testingSnap.child("hours/open/weekdays").val();
+            weekendHours[i] = testingSnap.child("hours/open/weekends").val();
+            routeArray[i] = i;
             i++;
           })
           that.setState({
-            gym1 : arrayTest[0],
-            gym2 : arrayTest[1],
+            gyms : nameArray,
+            images : imageArray,
+            pages : pageArray,
+            routes : routeArray,
+            WDHours : weekdayHours,
+            WEHours : weekendHours,
           })
         })
-
-        /*mainImageRef.getDownloadURL().then(function(url) {
-          console.log(url);
-        });
-        */
-
-        /*mainImageRef.once("value").then(function(imageSnapshot) {
-          console.log(imageSnapshot);
-          var i = 0;
-          imageSnapshot.forEach(function(testingSnap){
-            imageArray[i] = testingSnap.child.val();
-            //console.log(arrayTest[i]);
-            i++;
-          })
-          that.setState({
-            image1 : imageArray[0],
-            //gym2 : arrayTest[1],
-          })
-        })
-        */
-
-       
     }
   
   render() {
     const { navigate } = this.props.navigation;
     const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
-      });
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
+    });
+    var screen = [];
+    for(i = 0; i < this.state.gyms.length; i++){
+      console.log(weekdayHours + weekendHours)
+      screen.push(
+        <View style={styles.container}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate('RecCenter')}>
+              <AutoHeightImage width={deviceWidth} source={{uri: this.state.images[i]}} />
+            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gyms[i]}</Text>
+            	      <Text style={{textAlign: 'center', fontSize: 20, textDecorationLine: 'underline'}}>{'\nHours'}</Text>
+            	      <Text style={{textAlign: 'center', fontSize: 15}}>{this.state.WDHours[i]}</Text>
+            	      <Text style={{textAlign: 'center', fontSize: 15}}>{this.state.WEHours[i]}</Text>
+			      </TouchableOpacity>
+	      </View>
+      )
+    }
     return (
     	<Container>
             <Header style={{backgroundColor: 'gold'}}>
@@ -122,23 +117,25 @@ export default class HomeScreen extends Component {
 	        </Header>
 	        <Content>
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
-	          <View style={styles.container}>
-	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("RecCenter", {screen: "Rec Center"})}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source = {{uri: this.state.image1.toString}}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym1}</Text>
+            {screen}
+            {/*
+            <View style={styles.container}>
+	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate(this.state.pages[0])}>
+              <AutoHeightImage width={deviceWidth} source={{uri: this.state.images[0]}} />
+            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gyms[0]}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
-			 </TouchableOpacity>
+			      </TouchableOpacity>
 	         	</View>
 	         	<View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
-            	      <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/FieldHouse.jpg')}/>
-            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gym2}</Text>
+              <AutoHeightImage width={deviceWidth} source={{uri: this.state.images[1]}} />
+            	      <Text style={{textAlign: 'center', fontSize: 30}}>{'\n' + this.state.gyms[1]}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
-			 </TouchableOpacity>
+			      </TouchableOpacity>
 	         	</View>
 	         	<View style={styles.container}>
 	          <TouchableOpacity activeOpacity={ 0.75 } style={ styles.button } onPress={() => Alert.alert('You Pressed','#3!',[{text: 'OK', onPress: () => console.log('OK Pressed')}])}>
@@ -147,8 +144,9 @@ export default class HomeScreen extends Component {
             	      <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'\nWeekday: 5AM - 7PM'}</Text>
             	      <Text style={{textAlign: 'center', fontSize: 15}}>{'Weekend: 5:30AM - 8PM'}</Text>
-			 </TouchableOpacity>
-	         	</View>
+			      </TouchableOpacity>
+            </View>
+            */}
         </ScrollView>
 	        </Content>
       </Container>
