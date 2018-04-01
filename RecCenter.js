@@ -26,18 +26,10 @@ class RecCenter extends Component {
 				var gymInfo=[];
 				var displayInfo=[];
 				var i=0;
-				// console.log("PROPS: " + state.params.db);
-				state.params.db.forEach(function(testingSnap){
-						// gymInfo.push(testingSnap.child("name").val())
-						 gymInfo.push(testingSnap)
-						// displayInfo.push(
-						// 	<Text style={{textAlign: 'center', fontSize: 30}}>{'\nCampus Recreation & Wellness Center'}</Text>
-            // 	<Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
-            // 	<Text style={{textAlign: 'center', fontSize: 15}}>{'\nMonday: 5AM - 7PM'}</Text>
-            // 	<Text style={{textAlign: 'center', fontSize: 15}}>{'Tuesday: 5:30AM - 8PM'}</Text>
-						// );
+				state.params.db.forEach(function(data){
+						 gymInfo.push(data)
 				})
-				console.log(gymInfo[0])
+				gymInfo[0].child("workoutArea").forEach(function(area){console.log(area.child("name"))})
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
@@ -66,13 +58,20 @@ class RecCenter extends Component {
 	          <ScrollView scrollsToTop={true} ref={(ref) => this.myScroll = ref}>
 	          <View style={styles.container}>
             	    <Image style={{width: deviceWidth}} resizeMode='cover' source={require('./images/CampusRec.jpg')}/>
-            	    <Text style={{textAlign: 'center', fontSize: 30}}>{'\nCampus Recreation & Wellness Center'}</Text>
+            	    <Text style={{textAlign: 'center', fontSize: 30}}>{'\n'+gymInfo[0].child("name").val()}</Text>
+
+									<Text style={{textAlign: 'center', fontSize: 20}}>{'\nAddress'}</Text>
+            	    <Text style={{textAlign: 'center', fontSize: 15}}>{gymInfo[0].child("address").val()}</Text>
+
+									<Text style={{textAlign: 'center', fontSize: 20}}>{'\nPhone'}</Text>
+            	    <Text style={{textAlign: 'center', fontSize: 15}}>{gymInfo[0].child("phone").val()}</Text>
+
             	    <Text style={{textAlign: 'center', fontSize: 20}}>{'\nHours'}</Text>
-            	    <Text style={{textAlign: 'center', fontSize: 15}}>{'\nMonday: 5AM - 7PM'}</Text>
-            	    <Text style={{textAlign: 'center', fontSize: 15}}>{'Tuesday: 5:30AM - 8PM'}</Text>
-                    <Button style={{alignItems: 'center'}} transparent dark onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
+            	    <Text style={{textAlign: 'center', fontSize: 15}}>{gymInfo[0].child("hours").child("open").child("weekdays").val()}</Text>
+            	    <Text style={{textAlign: 'center', fontSize: 15}}>{gymInfo[0].child("hours").child("open").child("weekends").val()}</Text>
+                    {/* <Button style={{alignItems: 'center'}} transparent dark onPress={() => navigate("FieldHouse", {screen: "Field House"})}>
                         <Text style={{textAlign: 'center', fontSize: 30, color: 'blue'}}>{'\n\n\n\n\n\n    Take Me To Field House'}</Text>
-                    </Button>
+                    </Button> */}
                     <Text style={{textAlign: 'center', fontSize: 15}}>{'\n\n\n\n'}</Text>
 	         	</View>
         </ScrollView>
