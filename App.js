@@ -1,13 +1,20 @@
 /*
 	YOU MUST RUN EACH OF THESE DEPENDENCIES IN THE CONSOLE PRIOR TO RUNNING
 	
+	yarn install
+	yarn add firebase
+	yarn add exp
+	yarn add watchman
+
 	yarn add react
+	yarn add react-dom
 	yarn add react-native
 	yarn add native-base
 	yarn add react-native-scroll-to-top
 	yarn add react-navigation
+	yarn add react-test-renderer
+	yarn add react-native-auto-height-image
 
-	yarn add react-dom
 	yarn add --save-dev react-addons-test-utils enzyme
 	yarn add --save-dev enzyme enzyme-adapter-react-16
 	yarn add husky lint-staged prettier
