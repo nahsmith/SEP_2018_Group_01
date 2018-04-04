@@ -29,11 +29,21 @@ class RecCenter extends Component {
 				state.params.db.forEach(function(data){
 						 gymInfo.push(data)
 				})
-				gymInfo[0].child("workoutArea").forEach(function(area){console.log(area.child("name"))})
+				var workoutAreaName=[]
+				gymInfo[0].child("workoutArea").forEach(function(area){
+					workoutAreaName[i]=area.child("name");
+					i++;
+				})
+				// console.log(workoutAreaName)
+
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'HomeScreen' })],
-          });
+					});
+				for(i=0; i <workoutAreaName.length;i++){
+					displayInfo.push(<Text style={{textAlign: 'center', fontSize: 15}}>{workoutAreaName[i]}</Text>)
+				}
+				// console.log(displayInfo);
         return (
     <Container>
             <Header style={{backgroundColor: 'gold'}}>
